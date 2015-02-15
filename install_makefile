@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Download and unzip SeqAn 2.0.0
+command="wget http://packages.seqan.de/seqan-library/seqan-library-2.0.0.zip"
+echo "$command"
+eval $command
+command="unzip seqan-library-2.0.0.zip"
+echo "$command"
+eval $command
+
+# Make binary
+command="make"
+echo "$command"
+eval $command

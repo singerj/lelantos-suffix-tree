@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Download and unzip SeqAn 2.0.0
+wget http://packages.seqan.de/seqan-src/seqan-src-2.0.0.tar.gz
+tar xfvz seqan-src-2.0.0.tar.gz
+
+command="cd seqan-seqan-v2.0.0"
+echo "$command"
+eval $command
+command="./util/bin/skel.py app suffix_tree_mapping ."
+echo "$command"
+eval $command
+command="cp ../suffix_tree_mapping.cpp apps/suffix_tree_mapping/suffix_tree_mapping.cpp"
+echo "$command"
+eval $command
+command="sed -i 's/#set (SEQAN_FIND_DEPENDENCIES NONE)/set (SEQAN_FIND_DEPENDENCIES OpenMP)/g' apps/suffix_tree_mapping/CMakeLists.txt"
+echo "$command"
+eval $command
+
+command="cd ../"
+echo "$command"
+eval $command
+command="mkdir -p build/release/"
+echo "$command"
+eval $command
+
+command="cd build/release/"
+echo "$command"
+eval $command
+command="cmake ../../seqan-seqan-v2.0.0 -DCMAKE_BUILD_TYPE=Release"
+echo "$command"
+eval $command
+command="make suffix_tree_mapping"
+echo "$command"
+eval $command
+command="cp bin/suffix_tree_mapping ../../"
+echo "$command"
+eval $command
+command="cd ../../"
+echo "$command"
+eval $command

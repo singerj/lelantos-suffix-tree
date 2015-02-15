@@ -1,0 +1,8 @@
+There are two possibilities to install the suffix tree version of Lelantos.
+
+By executing the script "install_makefile" SeqAn-2.0.0 is downloaded and the
+suffix_tree_mapping binary is build using "Makefile".
+
+The second option is to call the script "install_cmake". Again, first
+SeqAn-2.0.0 is downloaded. However, this time the script uses the cmake build
+system of SeqAn in order to generate the binary.
